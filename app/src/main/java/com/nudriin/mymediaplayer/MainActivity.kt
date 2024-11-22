@@ -28,15 +28,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        btnPlay.setOnClickListener {
-            if (!isReady) {
-                mMediaPlayer?.prepareAsync()
-            } else {
-                if (mMediaPlayer?.isPlaying as Boolean) {
-                    mMediaPlayer?.pause()
-                } else {
-                    mMediaPlayer?.start()
-                }
+        btnStop.setOnClickListener {
+            if (mMediaPlayer?.isPlaying as Boolean || isReady) {
+                mMediaPlayer?.stop()
+                isReady = false
             }
         }
 
