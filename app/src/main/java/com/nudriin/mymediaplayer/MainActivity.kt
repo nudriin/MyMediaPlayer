@@ -3,6 +3,7 @@ package com.nudriin.mymediaplayer
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import java.io.IOException
 
@@ -12,6 +13,32 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val btnPlay = findViewById<Button>(R.id.btn_play)
+        val btnStop = findViewById<Button>(R.id.btn_stop)
+
+        btnPlay.setOnClickListener {
+            if (!isReady) {
+                mMediaPlayer?.prepareAsync()
+            } else {
+                if (mMediaPlayer?.isPlaying as Boolean) {
+                    mMediaPlayer?.pause()
+                } else {
+                    mMediaPlayer?.start()
+                }
+            }
+        }
+
+        btnPlay.setOnClickListener {
+            if (!isReady) {
+                mMediaPlayer?.prepareAsync()
+            } else {
+                if (mMediaPlayer?.isPlaying as Boolean) {
+                    mMediaPlayer?.pause()
+                } else {
+                    mMediaPlayer?.start()
+                }
+            }
+        }
 
         init()
     }
